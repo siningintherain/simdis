@@ -1,0 +1,2 @@
+# simdis
+simple distribute plan
