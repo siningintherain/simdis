@@ -18,7 +18,7 @@ public class TestApp {
 
     static{
         try {
-            SimpleJDBCUtils.init("jdbc:mysql://127.0.0.1:3306/test","root","12345678");
+            SimpleJDBCUtils.init("jdbc:mysql://127.0.0.1:3306/test","root","root");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -31,5 +31,9 @@ public class TestApp {
         Connection connection = SimpleJDBCUtils.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("show tables;");
         ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            Object object = resultSet.getObject(1);
+            System.out.println(object);
+        }
     }
 }
